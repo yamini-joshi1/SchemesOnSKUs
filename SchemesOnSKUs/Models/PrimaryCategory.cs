@@ -10,5 +10,6 @@ namespace SchemesOnSKUs.Models
         public int Id { get; set; }
         public string PCatName { get; set; }
         public string PCatDesc { get; set; }
+        public int SchemeApplicable { get; set; }
     }
 }
