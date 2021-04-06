@@ -26,8 +26,22 @@ namespace SchemesOnSKUs.Models
         }
         public async Task<SecondaryCategory> Add(SecondaryCategory category, int[] skus)
         {
-            _secondaryCategoryList.Add(category);  
+            _secondaryCategoryList.Add(category);
+            await _sKURepository.UpdateSKUs(skus, category.Id);
             return category;
+        }
+        public async Task UpdateSCs(int[] scs, int primCat)
+        {
+            foreach (var sc in scs)
+            {
+                SecondaryCategory skuToBeUpdated = _secondaryCategoryList.FirstOrDefault(s => s.Id == sc);
+                skuToBeUpdated.PCat = primCat;
+            }
+        }
+        public async Task AddScheme(int S, int schemeCode)
+        {
+            SecondaryCategory sc = _secondaryCategoryList.FirstOrDefault(p => p.Id == S);
+            sc.SchemeApplicable = schemeCode;
         }
     }
 }

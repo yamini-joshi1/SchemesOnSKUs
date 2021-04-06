@@ -26,5 +26,18 @@ namespace SchemesOnSKUs.Models
             return sku;
         }
 
+        public async Task UpdateSKUs(int[] skus, int subCat)
+        {
+            foreach(var sku in skus)
+            {
+                SKU skuToBeUpdated = _skuList.FirstOrDefault(s => s.Id == sku);
+                skuToBeUpdated.SCat = subCat;
+            }
+        }
+        public async Task AddScheme(int skucode, int schemeCode)
+        {
+            SKU sku = _skuList.FirstOrDefault(p => p.Id == skucode);
+            sku.SchemeApplicable = schemeCode;
+        }
     }
 }

@@ -7,6 +7,11 @@ namespace SchemesOnSKUs.Models
 {
     public class PrimaryCategoryRepository : IPrimaryCategoryRepository
     {
+        private ISecondaryCategoryRepository _secondaryCategoryRepository;
+        public PrimaryCategoryRepository(ISecondaryCategoryRepository secondaryCategoryRepository)
+        {
+            _secondaryCategoryRepository = secondaryCategoryRepository;
+        }
         private List<PrimaryCategory> _primaryCategoryList;
         public PrimaryCategoryRepository()
         {
@@ -20,7 +25,14 @@ namespace SchemesOnSKUs.Models
         public async Task<PrimaryCategory> Add(PrimaryCategory category, int[] subCategories)
         {
             _primaryCategoryList.Add(category);
+            await _secondaryCategoryRepository.UpdateSCs(subCategories, category.Id);
             return category;
+        }
+
+        public async Task AddScheme(int P, int schemeCode)
+        {
+            PrimaryCategory pc = _primaryCategoryList.FirstOrDefault(p => p.Id == P);
+            pc.SchemeApplicable = schemeCode;
         }
     }
 }

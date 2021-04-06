@@ -7,6 +7,6 @@ namespace SchemesOnSKUs.Models
 {
     public interface ISchemeRepository
     {
-        Task<Scheme> Add(Scheme scheme);
+        Task<Scheme> Add(Scheme scheme, PrimaryCategory P, SecondaryCategory S, SKU sku);
     }
 }

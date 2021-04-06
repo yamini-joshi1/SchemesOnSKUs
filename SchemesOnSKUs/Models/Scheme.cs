@@ -13,5 +13,6 @@ namespace SchemesOnSKUs.Models
         public int FreeQty { get; set; }
         public double SchemeAmt { get; set; }
         public int SKUId { get; set; }
+        public int SchemeApplicable { get; set; }
     }
 }

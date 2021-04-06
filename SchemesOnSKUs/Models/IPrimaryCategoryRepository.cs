@@ -8,5 +8,6 @@ namespace SchemesOnSKUs.Models
     public interface IPrimaryCategoryRepository
     {
         Task<PrimaryCategory> Add(PrimaryCategory category, int[]subCategories);
+        Task AddScheme(int P, int schemeCode);
     }
 }

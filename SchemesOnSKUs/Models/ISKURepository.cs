@@ -8,6 +8,7 @@ namespace SchemesOnSKUs.Models
     public interface ISKURepository
     {
         Task<SKU> Add(SKU sku);
-
+        Task UpdateSKUs(int[] skus, int subCat);
+        Task AddScheme(int sku, int schemeCode);
     }
 }
