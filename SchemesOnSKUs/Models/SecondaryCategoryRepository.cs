@@ -43,5 +43,11 @@ namespace SchemesOnSKUs.Models
             SecondaryCategory sc = _secondaryCategoryList.FirstOrDefault(p => p.Id == S);
             sc.SchemeApplicable = schemeCode;
         }
+
+        public async Task MoveSc(int S, int P)
+        {
+            SecondaryCategory sc = _secondaryCategoryList.FirstOrDefault(p => p.Id == S);
+            sc.PCat = P;
+        }
     }
 }

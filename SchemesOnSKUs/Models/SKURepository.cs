@@ -39,5 +39,11 @@ namespace SchemesOnSKUs.Models
             SKU sku = _skuList.FirstOrDefault(p => p.Id == skucode);
             sku.SchemeApplicable = schemeCode;
         }
+
+        public async Task MoveSku(int skucode, int S)
+        {
+            SKU sku = _skuList.FirstOrDefault(p => p.Id == skucode);
+            sku.SCat = S;
+        }
     }
 }
